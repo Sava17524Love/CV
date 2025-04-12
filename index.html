@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Софія Вергелес Резюме</title>
+</head>
+<body>
+<h1>{{name}}</h1>
+<h3>{{position}}</h3>
+<h2>Contacts</h2>
+<ul>
+    {% for contact, link in contacts %}
+        {% if link %}
+            <li><a href={{link}}>{{contact}}</a></li>
+        {% else %}
+            <li>{{contact}}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+<h2>Summary</h2>
+<p>{{summary}}</p>
+
+<h2>Skills</h2>
+<table border="1">
+    {% for i in range(0, skills|length, 4) %}
+        <tr>
+            {% for j in range(4) %}
+                {% if i + j < skills|length %}
+                    <tr>{{ skills[i + j] }}</tr>
+                {% else %}
+                    <td></td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>    
+
+</body>
+</html>
